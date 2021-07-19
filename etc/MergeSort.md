@@ -10,64 +10,77 @@
 ```swift
 import Foundation
 
-class mergeSort {
+final class MergeSort {
 
-    var nums = [Int]()
-    var temp = Array(repeating: 0, count: Int.max)
+    private var nums : [Int]
     
-    func merge(_ left: Int, _ mid: Int, _ right: Int) {
-        var l = 0, r = 0, position = 0
+    init(_ nums: [Int]) {
+        self.nums = nums
+    }
+    
+    private func merge(_ left: Int, _ mid: Int, _ right: Int) {
+        var temp = [Int]()
+        var l = 0, r = 0
         let lLenght = mid - left
         let rLenght = right - mid + 1
         
         /// 병합 정렬 :  왼쪽 오른쪽의 가장 앞의 수 중, 더 작은 수를 temp에 넣음
         while l < lLenght && r < rLenght {
             if nums[left + l] < nums[mid + r] {
-                temp[position] = nums[left + l]
+                temp.append(nums[left + l])
                 l += 1
             } else {
-                temp[position] = nums[mid + r]
+                temp.append(nums[mid + r])
                 r += 1
             }
-            position += 1
         }
         
         /// 왼쪽 오른쪽 중, 길이가 더 길어서 남은 수들
         while l < lLenght {
-            temp[position] = nums[left + l]
+            temp.append(nums[left + l])
             l += 1
-            position += 1
         }
         while r < rLenght {
-            temp[position] = nums[mid + r]
+            temp.append(nums[mid + r])
             r += 1
-            position += 1
         }
         
         /// sorted temp arr -> original arr
-        for i in 0..<position {
+        for i in 0..<temp.count {
             nums[left + i] = temp[i]
         }
         
     }
     
-    func mergeSort(left: Int, right: Int) {
-        if left > right { return }
+    private func mergeSort(left: Int, right: Int) {
+        if left >= right { return }
         
         /// divide
-        let mid = left + right / 2
+        let mid = (left + right) / 2
         mergeSort(left: left, right: mid)
         mergeSort(left: mid + 1, right: right)
         
         /// conquer
         merge(left, mid + 1, right)
     }
+    
+    func sorted() -> [Int] {
+        mergeSort(left: 0, right: nums.count - 1)
+        return self.nums
+    }
+    
+    func test() {
+        let nums = [7, 11, 4, 9, 10, 3, 15, 2]
+        let mergeSort = MergeSort(nums)
+        print(mergeSort.sorted() == [2, 3, 4, 7, 9, 10, 11, 15])
+    }
+    
 }
 ```
 
 
 
-### 설명
+### 병합 정렬 설명
 
 - divide & conquer 분할 정복
 - ½ 로 계속해서 분할 → 쪼개진 배열을 정렬 → 병합 → 정렬 (반복)
@@ -80,7 +93,7 @@ class mergeSort {
 
   
 
-  #### `merge()` 메소드 설명
+### `merge()` 메소드 설명
 
 - 매개변수
   - left [ . . . ] mid [ . . . ] right
@@ -98,3 +111,4 @@ class mergeSort {
   - 그 정렬은 오른쪽, 왼쪽 그룹 중 더 작은 수를 `temp` 에 넣음으로 시행할 수 있다
   - 남은 길이는 `temp` 에 넣어준다
   - 정렬된 `temp` 를 원래 배열의 위치에 맞게 넣어준다
+
