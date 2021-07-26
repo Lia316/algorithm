@@ -1,6 +1,6 @@
 # 프로그래머스
 
-## 코딩테스트 연습 :  표 편집
+## 코딩테스트 연습 - 2021 카카오 채용연계형 인턴십 :  표 편집
 #### Double Linked List
 
 [문제링크](https://programmers.co.kr/learn/courses/30/lessons/81303?language=swift#)
@@ -146,5 +146,4 @@ func solution2(_ n:Int, _ k:Int, _ cmd:[String]) -> String {
 
 - 그림과 같이, 표의 prev, next를 저장하는 배열을 둔다
 - 선택된 행은 prev와 next를 통해서만 움직인다
-
 
