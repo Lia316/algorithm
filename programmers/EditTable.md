@@ -147,3 +147,5 @@ func solution2(_ n:Int, _ k:Int, _ cmd:[String]) -> String {
 - 그림과 같이, 표의 prev, next를 저장하는 배열을 둔다
 - 선택된 행은 prev와 next를 통해서만 움직인다
 
+- index를 넘지 않게 하기 위해, prev, next 각 배열의 양 끝에 원소를 추가한다
+
