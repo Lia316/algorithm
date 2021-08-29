@@ -1,5 +1,10 @@
 # 알고리즘 문제 풀이 저장소
 
+## 티어 [![Solved.ac Badge](https://img.shields.io/badge/solved.ac-grey?style=flat-square&logo=solved.ac&logoColor=white&)](https://www.acmicpc.net/user/Lia316)
+
+<img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=Lia316">
+
+
 ## 원칙
 1. 1일 1백준 커밋
 
